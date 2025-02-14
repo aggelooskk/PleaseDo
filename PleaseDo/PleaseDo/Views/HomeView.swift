@@ -10,14 +10,34 @@ import SwiftUI
 struct HomeView: View {
     @State private var path = NavigationPath()
     
+    @State private var todoItems: [Item] = [
+        Item(id: "abc123", authorId: "John Doe", title: "First item", description: "First Description", startDate: .now),
+        Item(id: "123abc", authorId: "John Doe", title: "Second item", description: "Second Description", startDate: .now),
+        Item(id: "qwe123", authorId: "John Doe", title: "Third item", description: "Third Description", startDate: .now),
+    ]
+    
+    @State private var inProgressItems: [Item] = [
+        Item(id: "abc123", authorId: "John Doe", title: "First item", description: "First Description", startDate: .now),
+        Item(id: "123abc", authorId: "John Doe", title: "Second item", description: "Second Description", startDate: .now),
+        Item(id: "qwe123", authorId: "John Doe", title: "Third item", description: "Third Description", startDate: .now),
+    ]
+    
+    @State private var doneItems: [Item] = [
+        Item(id: "abc123", authorId: "John Doe", title: "First item", description: "First Description", startDate: .now),
+        Item(id: "123abc", authorId: "John Doe", title: "Second item", description: "Second Description", startDate: .now),
+        Item(id: "qwe123", authorId: "John Doe", title: "Third item", description: "Third Description", startDate: .now),
+    ]
+    
+    
+    
     var body: some View {
         NavigationStack {
             TabView {
-                ListView(title: "To Do")
+                ListView(title: "To Do", items: $todoItems)
                 
-                ListView(title: "In Progress")
+                ListView(title: "In Progress", items: $inProgressItems)
                 
-                ListView(title: "Done!")
+                ListView(title: "Done", items: $doneItems)
             }
             .tabViewStyle(.page)
             .navigationBarTitleDisplayMode(.inline)
