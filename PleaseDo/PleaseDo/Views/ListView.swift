@@ -28,8 +28,10 @@ struct ListView: View {
                 .padding(.horizontal)
                 .padding(.top)
             
-            List($items) { $item in 
-                Text(item.title)
+            List($items) { $item in
+                NavigationLink(destination: Text("Item details view")) {
+                    ListItemView(item: item, height: 100)
+                }
             }
             .scrollContentBackground(.hidden)
             .listStyle(.insetGrouped)
