@@ -32,14 +32,19 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            TabView {
-                ListView(title: "To Do", items: $todoItems)
+            ZStack {
+                Color.background
+                    .ignoresSafeArea()
                 
-                ListView(title: "In Progress", items: $inProgressItems)
-                
-                ListView(title: "Done", items: $doneItems)
+                TabView {
+                    ListView(title: "To Do", items: $todoItems)
+                    
+                    ListView(title: "In Progress", items: $inProgressItems)
+                    
+                    ListView(title: "Done", items: $doneItems)
+                }
+                .tabViewStyle(.page)
             }
-            .tabViewStyle(.page)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
