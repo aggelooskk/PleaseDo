@@ -14,11 +14,11 @@ struct ListItemView: View {
     var body: some View {
         HStack(spacing: 10) {
             VStack(alignment: .leading, spacing: 3) {
-                Text("Title")
+                Text(item.title)
                     .font(.headline)
                     .lineLimit(1)
                 
-                Text("Some description goes here")
+                Text(item.description)
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .lineLimit(2)
