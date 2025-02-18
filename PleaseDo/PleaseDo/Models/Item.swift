@@ -21,7 +21,7 @@ struct Item: Identifiable, Equatable, Hashable {
     }
 }
 
-enum Status: String {
+enum Status: String, CaseIterable {
     case todo = "To Do"
     case inProgress = "In Progress"
     case done = "Done"
