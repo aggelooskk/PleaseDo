@@ -1,5 +1,5 @@
 //
-//  StatusMenu.swift
+//  PriorityMenu.swift
 //  PleaseDo
 //
 //  Created by Anxhelo Kermezo on 18/2/25.
@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-struct StatusMenu: View {
-    @Binding var status: Status
+struct PriorityMenu: View {
+    @Binding var priority: Priority 
     
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text("Status:")
+                Text("Priority:")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
                 
-                Picker("Status", selection: $status) {
-                    ForEach(Status.allCases, id: \.self) {
+                Picker("Priority", selection: $priority) {
+                    ForEach(Priority.allCases, id: \.self) {
                         if $0 == .unknown {
                             EmptyView()
                         } else {
@@ -35,5 +35,5 @@ struct StatusMenu: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    StatusMenu(status: .constant(.todo))
+    PriorityMenu(priority: .constant(.low))
 }

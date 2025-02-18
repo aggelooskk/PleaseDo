@@ -37,7 +37,7 @@ enum Status: String, CaseIterable {
     }
 }
 
-enum Priority: String {
+enum Priority: String, CaseIterable {
     case low = "Low"
     case medium = "Medium"
     case high = "High"
