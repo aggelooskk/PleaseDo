@@ -9,15 +9,20 @@ import SwiftUI
 
 struct LoginFields: View {
     @State private var email: String = ""
+    @State private var pw: String = ""
     
     var body: some View {
         VStack(spacing: 12) {
             EmailTextField(placeholder: "user@mail.com", text: $email)
+                .shadow(color: .gray, radius: 4, x: 1, y: 2.5)
+            
+            PasswordField(placeholder: "pasword", text: $pw)
+                .shadow(color: .gray, radius: 4, x: 1, y: 2.5)
         }
         .padding(.horizontal)
     }
 }
 
-#Preview {
+#Preview(traits: .sizeThatFitsLayout) {
     LoginFields()
 }
