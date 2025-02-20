@@ -32,7 +32,6 @@ struct EmailTextField: View {
                         RoundedRectangle(cornerRadius: 8)
                             .fill(.background)
                     )
-        
         )
     }
 }
