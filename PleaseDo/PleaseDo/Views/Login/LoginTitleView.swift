@@ -10,6 +10,8 @@ import SwiftUI
 struct LoginTitleView: View {
     var body: some View {
         HStack() {
+            Spacer()
+            
             Image("PleaseDoLogo")
                 .resizable()
                 .scaledToFit()
@@ -29,6 +31,9 @@ struct LoginTitleView: View {
                     .fontWeight(.medium)
                     .foregroundStyle(.secondary)
             }
+            
+            Spacer()
+            
         }
         .frame(maxHeight: 110)
         .padding(.horizontal)
