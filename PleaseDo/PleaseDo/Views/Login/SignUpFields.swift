@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SignUpFields: View {
-    @State private var fname = ""
-    @State private var lname = ""
-    @State private var email: String = ""
-    @State private var pw: String = ""
-    
+    @Binding var fname: String
+    @Binding var lname: String
+    @Binding var email: String
+    @Binding var pw: String
+
     var body: some View {
         VStack(spacing: 12) {
             KeyboardView(placeholder: "First Name", text: $fname)
@@ -31,6 +31,6 @@ struct SignUpFields: View {
     }
 }
 
-#Preview {
-    SignUpFields()
+#Preview(traits: .sizeThatFitsLayout) {
+    SignUpFields(fname: .constant(""), lname: .constant(""), email: .constant(""), pw: .constant(""))
 }

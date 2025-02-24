@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LoginFields: View {
-    @State private var email: String = ""
-    @State private var pw: String = ""
+    @Binding var email: String
+    @Binding var pw: String
     
     var body: some View {
         VStack(spacing: 12) {
@@ -24,5 +24,5 @@ struct LoginFields: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    LoginFields()
+    LoginFields(email: .constant(""), pw: .constant(""))
 }

@@ -30,7 +30,14 @@ final class LoginVM: ObservableObject {
     }
     
     @Published var titleText = "Login"
-    
     @Published var toggleText = "Don't have an account?"
     @Published var prompt = "Sign up here"
+    
+    @Published var email = ""
+    @Published var pw = ""
+    
+    @Published var newEmail = ""
+    @Published var newPw = ""
+    @Published var fname = ""
+    @Published var lname = ""
 }
