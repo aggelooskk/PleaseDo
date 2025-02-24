@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A23F80CF2D6C790000329A8A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A23F80CE2D6C790000329A8A /* FirebaseAuth */; };
+		A23F80D12D6C790000329A8A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A23F80D02D6C790000329A8A /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A2457C3D2D5DFD6400B5E88A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23F80CF2D6C790000329A8A /* FirebaseAuth in Frameworks */,
+				A23F80D12D6C790000329A8A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,8 @@
 			);
 			name = PleaseDo;
 			packageProductDependencies = (
+				A23F80CE2D6C790000329A8A /* FirebaseAuth */,
+				A23F80D02D6C790000329A8A /* FirebaseFirestore */,
 			);
 			productName = PleaseDo;
 			productReference = A2457C2C2D5DFD6200B5E88A /* PleaseDo.app */;
@@ -195,6 +204,9 @@
 			);
 			mainGroup = A2457C232D5DFD6200B5E88A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A23F80CD2D6C790000329A8A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A2457C2D2D5DFD6200B5E88A /* Products */;
 			projectDirPath = "";
@@ -552,6 +564,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A23F80CD2D6C790000329A8A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A23F80CE2D6C790000329A8A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A23F80CD2D6C790000329A8A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		A23F80D02D6C790000329A8A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A23F80CD2D6C790000329A8A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A2457C242D5DFD6200B5E88A /* Project object */;
 }

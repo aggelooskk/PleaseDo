@@ -8,6 +8,7 @@
 import Foundation
 
 final class LoginVM: ObservableObject {
+    private let auth = LoginManager()
     
     enum Status {
         case unknown, loggedIn, loggedOut
