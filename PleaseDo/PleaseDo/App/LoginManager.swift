@@ -9,12 +9,20 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+protocol LoginManagerDelegate where Self: LoginVM {
+    func authStateDidChange(isLoggedIn: Bool)
+}
+
 final class LoginManager {
     // fetch login related data to pass to LoginVM
-    
+    weak var delegate: LoginManagerDelegate?
     private let db = Firestore.firestore()
     private var handler: AuthStateDidChangeListenerHandle?
-    var currentUser: User?
+    var currentUser: User? {
+        didSet {
+            delegate?.authStateDidChange(isLoggedIn: currentUser != nil)
+        }
+    }
     
     init() {
         setupListener()

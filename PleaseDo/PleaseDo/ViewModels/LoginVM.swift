@@ -42,7 +42,17 @@ final class LoginVM: ObservableObject {
     @Published var fname = ""
     @Published var lname = ""
     
+    init() {
+        auth.delegate = self
+    }
+    
     func signUp() {
         auth.signUp(fname, lname, newEmail, newPw)
+    }
+}
+
+extension LoginVM: LoginManagerDelegate {
+    func authStateDidChange(isLoggedIn: Bool) {
+        loginStatus = isLoggedIn ? .loggedIn : .loggedOut
     }
 }
