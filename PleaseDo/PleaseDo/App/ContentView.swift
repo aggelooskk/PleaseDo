@@ -18,6 +18,7 @@ struct ContentView: View {
                 .scaleEffect(2)
         case .loggedIn:
             HomeView()
+                .environmentObject(vm)
         case .loggedOut:
             LoginView()
                 .environmentObject(vm)
