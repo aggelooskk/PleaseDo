@@ -21,13 +21,24 @@ final class ItemsManager {
         let id = currentUser.uid
         
         db.collection("Items").whereField("authorId", isEqualTo: id)
-          .addSnapshotListener { querySnapshot, error in
-            guard let documents = querySnapshot?.documents else {
-              print("Error fetching documents: \(error!)")
-              return
+          .addSnapshotListener { snapshot, err in
+              if let err {
+                  print("Error fetching documents: \(err)")
+                  return
+              }
+              guard let snapshot else { return }
+              snapshot.documentChanges.forEach { diff in
+                  let data = diff.document.data()
+                  let item = Item(data: data)
+                  
+                  switch diff.type {
+                  case .added:
+                      
+                  case .modified:
+                      
+                  case .removed:
+                }
             }
-            let cities = documents.compactMap { $0["name"] }
-            print("Current cities in CA: \(cities)")
-          }
+        }
     }
 }
