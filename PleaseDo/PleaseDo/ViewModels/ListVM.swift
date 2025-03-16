@@ -38,8 +38,19 @@ final class ListVM: ObservableObject {
 }
 
 extension ListVM: ItemsManagerDelegate {
-    func didFetchBatchItems(_ item: [Item]) {
-        <#code#>
+    func didFetchBatchItems(_ items: [Status: [Item]]) {
+        for status in items.keys {
+            switch status {
+            case .todo:
+                todoItems = items[status]!
+            case .inProgress:
+                inPorgressItems = items[status]!
+            case .done:
+                doneItems = items[status]!
+            case .unknown:
+                continue
+            }
+        }
     }
     
     func didAddItem(_ item: Item) {
@@ -53,6 +64,4 @@ extension ListVM: ItemsManagerDelegate {
     func didDeleteItem(_ item: Item) {
         <#code#>
     }
-    
-    
 }

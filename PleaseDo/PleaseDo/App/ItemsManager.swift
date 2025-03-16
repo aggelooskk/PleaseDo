@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 protocol ItemsManagerDelegate where Self: ListVM {
-    func didFetchBatchItems(_ item: [Item])
+    func didFetchBatchItems(_ items: [Status: [Item]])
     func didAddItem(_ item: Item)
     func didUpdateItem(_ item: Item)
     func didDeleteItem(_ item: Item)
@@ -26,7 +26,11 @@ final class ItemsManager {
     
     private var isInitialFetch = true
     
-    private var allItems: [Item] = []
+    private var allItems: [Status: [Item]] = [
+        .todo: [],
+        .inProgress: [],
+        .done: []
+    ]
     
     func fetchItems() {
         guard let currentUser = Auth.auth().currentUser else { return }
@@ -47,23 +51,29 @@ final class ItemsManager {
                   switch diff.type {
                   case .added:
                       if isInitialFetch {
-                          allItems.append(item)
+                          allItems[item.status]?.append(item)
                       } else {
                           delegate?.didAddItem(item)
                       }
                   case .modified:
                       delegate?.didUpdateitem(item)
                   case .removed:
-                      delegate?.didDeleteItem(_item: item)
+                      delegate?.didDeleteItem(item)
                 }
             }
               guard isInitialFetch else { return }
-              delegate?.didFetchBatchItems(allItems)
+              sortBatchItems()
               isInitialFetch = false
         }
     }
     
     private func sortBatchItems() {
-        // perform sorting logic
+        var sortedItems: [Status: [Item]] = [:]
+        allItems.keys.forEach { status in
+            sortedItems[status] = allItems[status]?.sorted(by: {
+                $0.startDate > $1.startDate
+            })
+        }
+        delegate?.didFetchBatchItems(sortedItems)
     }
 }
