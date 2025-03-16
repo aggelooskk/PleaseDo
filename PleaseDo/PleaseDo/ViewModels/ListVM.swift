@@ -39,16 +39,19 @@ final class ListVM: ObservableObject {
 
 extension ListVM: ItemsManagerDelegate {
     func didFetchBatchItems(_ items: [Status: [Item]]) {
-        for status in items.keys {
-            switch status {
-            case .todo:
-                todoItems = items[status]!
-            case .inProgress:
-                inPorgressItems = items[status]!
-            case .done:
-                doneItems = items[status]!
-            case .unknown:
-                continue
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            for status in items.keys {
+                switch status {
+                case .todo:
+                    todoItems = items[status]!
+                case .inProgress:
+                    inPorgressItems = items[status]!
+                case .done:
+                    doneItems = items[status]!
+                case .unknown:
+                    continue
+                }
             }
         }
     }
