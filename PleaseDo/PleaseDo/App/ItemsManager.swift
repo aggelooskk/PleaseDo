@@ -79,7 +79,7 @@ final class ItemsManager {
     
     func save(_ item: Item) async throws {
         do {
-            try await db.collection("cities").document("LA").setData(item.toObject())
+            try await db.collection("Items").document(item.id).setData(item.toObject())
             print("Document successfully written!")
         } catch {
             print("Error writing document: \(error)")
