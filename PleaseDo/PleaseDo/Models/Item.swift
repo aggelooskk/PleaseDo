@@ -47,7 +47,7 @@ enum Status: String, CaseIterable {
     init(_ str: String) {
         self = switch str.lowercased() {
         case "todo": .todo
-        case "inprogress": .inProgress
+        case "in progress": .inProgress
         case "done": .done
         default: .unknown
         }
