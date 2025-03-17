@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItemDetailsView: View {
     let item: Item
-    @State private var updatedItem = Item(id: "abc123", authorId: "dsdfsa", title: "Test", description: "Test", status: .todo, priority: .low)
+    @State private var updatedItem = Item(id: "abc123", authorId: "dsdfsa", title: "Test", description: "Test", startDate: .now, status: .todo, priority: .low)
     
     var body: some View {
         VStack(spacing: 10) {

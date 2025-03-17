@@ -22,7 +22,7 @@ struct HomeView: View {
                 TabView {
                     ListView(title: "To Do", items: $vm.todoItems)
                     
-                    ListView(title: "In Progress", items: $vm.inPorgressItems)
+                    ListView(title: "In Progress", items: $vm.inProgressItems)
                     
                     ListView(title: "Done", items: $vm.doneItems)
                 }
@@ -48,7 +48,7 @@ struct HomeView: View {
             .navigationDestination(for: NavPath.self) { path in
                 switch path {
                 case .newItem:
-                    NewItemView()
+                    NewItemView(path: $path)
                 case .details(let item):
                     ItemDetailsView(item: item)
                 }
