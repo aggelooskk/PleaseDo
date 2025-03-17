@@ -8,33 +8,37 @@
 import SwiftUI
 
 struct NewItemView: View {
-    @State private var text = ""
-    @State private var description = ""
-    @State private var item = Item(id: "abc123", authorId: "dsdfsa", title: "Test", description: "Test", status: .todo, priority: .low)
+    @StateObject private var vm = NewItemVM()
     
     var body: some View {
         VStack(spacing: 10) {
             
             Spacer()
             
-            TitledTextField(title: "Status", placeholder: "What do you need to do", text: $text)
+            TitledTextField(title: "Status", placeholder: "What do you need to do", text: $vm.newItem.text)
             
             Divider()
             
-            TitledTextField(title: "Description", placeholder: "Add a breef descriptio ", text: $description)
+            TitledTextField(title: "Description", placeholder: "Add a breef descriptio ", text: $vm.newItem.description)
             
             Divider()
             
-            StatusMenu(status: $item.status)
+            StatusMenu(status: $vm.newItem.status)
             
             Divider()
             
-            PriorityMenu(priority: $item.priority)
+            PriorityMenu(priority: $vm.newItem.priority)
             
             Spacer()
             
             CTAButton(title: "Confirm") {
-                print("ctabutton tapped")
+                Task {
+                    do {
+                        try await vm.saveNewItem()
+                    } catch {
+                        
+                    }
+                }
             }
         }
         .padding(.horizontal)
