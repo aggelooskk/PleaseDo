@@ -30,9 +30,13 @@ final class NewItemVM: @ObservableObject {
         Task {
             do {
                 try await  IM.shared.save(newItem)
-                didSaveItem = true
+                DispatchQueue.main.async { [weak self] in
+                    self?.didSaveItem = true
+                }
             } catch {
-                saveItemError = true
+                DispatchQueue.main.async { [weak self] in
+                    self?.saveItemError = true
+                }
             }
         }
     }
