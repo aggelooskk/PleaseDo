@@ -8,18 +8,9 @@
 import Foundation
 
 final class ListVM: ObservableObject {
-    @Published var todoItems: [Item] = [
-       
-    ]
-    
-    @Published var inProgressItems: [Item] = [
-
-    ]
-    
-    @Published var doneItems: [Item] = [
-     
-    ]
-    
+    @Published var todoItems: [Item] = []
+    @Published var inProgressItems: [Item] = []
+    @Published var doneItems: [Item] = []
     @Published var unknown: [Item] = []
     
     init() {
