@@ -61,6 +61,9 @@ final class LoginVM: ObservableObject {
 
 extension LoginVM: LoginManagerDelegate {
     func authStateDidChange(isLoggedIn: Bool) {
-        loginStatus = isLoggedIn ? .loggedIn : .loggedOut
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            loginStatus = isLoggedIn ? .loggedIn : .loggedOut
+        }
     }
 }

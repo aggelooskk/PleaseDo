@@ -26,10 +26,10 @@ struct ListItemView: View {
             
             Spacer()
             
-            Image(systemName: "circle")
+            Image(systemName: item.priority.img)
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(.blue)
+                .foregroundStyle(item.priority.color)
                 .frame(maxHeight: height * 0.45)
         }
     }
