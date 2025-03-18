@@ -10,9 +10,14 @@ import SwiftUI
 struct ListView: View {
     let title: String
     @Binding var items: [Item]
+    @Binding var shouldReDraw: Bool
     
     var body: some View {
         VStack(spacing: 0) {
+            if shouldReDraw {
+                EmptyView()
+            }
+            
             Text(title)
                 .font(.title3)
                 .fontWeight(.medium)
@@ -44,5 +49,5 @@ struct ListView: View {
         Item(id: "abc123", authorId: "John Doe", title: "First item", description: "First Description", startDate: .now + 5, status: .todo, priority: .low),
         Item(id: "123abc", authorId: "John Doe", title: "Second item", description: "Second Description", startDate: .now + 10, status: .inProgress, priority: .medium),
         Item(id: "qwe123", authorId: "John Doe", title: "Third item", description: "Third Description", startDate: .now + 10, status: .done, priority: .high),
-    ]))
+    ]), shouldReDraw: .constant(true))
 }
