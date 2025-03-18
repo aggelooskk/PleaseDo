@@ -20,11 +20,11 @@ struct HomeView: View {
                     .ignoresSafeArea()
                 
                 TabView {
-                    ListView(title: "To Do", items: $vm.todoItems)
+                    ListView(title: "To Do", items: $vm.todoItems, shouldReDraw: $vm.shouldReDraw)
                     
-                    ListView(title: "In Progress", items: $vm.inProgressItems)
+                    ListView(title: "In Progress", items: $vm.inProgressItems, shouldReDraw: $vm.shouldReDraw)
                     
-                    ListView(title: "Done", items: $vm.doneItems)
+                    ListView(title: "Done", items: $vm.doneItems, shouldReDraw: $vm.shouldReDraw)
                 }
                 .tabViewStyle(.page)
             }
