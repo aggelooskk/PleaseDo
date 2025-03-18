@@ -50,7 +50,7 @@ struct HomeView: View {
                 case .newItem:
                     NewItemView(path: $path)
                 case .details(let item):
-                    ItemDetailsView(item: item)
+                    ItemDetailsView(item: item, path: $path)
                 }
             }
             .confirmationDialog("Continue signing out?", isPresented: $showLogout) {
