@@ -9,32 +9,38 @@ import SwiftUI
 
 struct ItemDetailsView: View {
     let item: Item
-    @State private var updatedItem = Item(id: "abc123", authorId: "dsdfsa", title: "Test", description: "Test", startDate: .now, status: .todo, priority: .low)
+    @StateObject private var vm = ItemDetailsVM()
     
     var body: some View {
         VStack(spacing: 10) {
-            TitledTextField(title: "Status", placeholder: "What do you need to do", text: $updatedItem.title)
+            TitledTextField(title: "Status", placeholder: "What do you need to do", text: $vm.updatedItem.title)
             
             Divider()
             
-            TitledTextField(title: "Description", placeholder: "Add a breef descriptio ", text: $updatedItem.description)
+            TitledTextField(title: "Description", placeholder: "Add a breef descriptio ", text: $vm.updatedItem.description)
             
             Divider()
             
-            StatusMenu(status: $updatedItem.status)
+            StatusMenu(status: $vm.updatedItem.status)
             
             Divider()
             
-            PriorityMenu(priority: $updatedItem.priority)
+            PriorityMenu(priority: $vm.updatedItem.priority)
             
             Spacer()
             
-            CTAButton(title: "Confirm") {
-                print("ctabutton tapped")
+            if vm.initialItem .isDifferent(comparedTo: vm.updatedItem) {
+                CTAButton(title: "Confirm") {
+                    print("ctabutton tapped")
+                }
             }
         }
         .padding()
         .navigationTitle("Details")
+        .onAppear {
+            vm.initialItem = item
+            vm.updatedItem = item
+        }
     }
 }
 
