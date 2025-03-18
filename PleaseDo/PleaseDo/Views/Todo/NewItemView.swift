@@ -16,7 +16,7 @@ struct NewItemView: View {
             
             Spacer()
             
-            TitledTextField(title: "Status", placeholder: "What do you need to do", text: $vm.newItem.text)
+            TitledTextField(title: "Status", placeholder: "What do you need to do", text: $vm.newItem.title)
             
             Divider()
             

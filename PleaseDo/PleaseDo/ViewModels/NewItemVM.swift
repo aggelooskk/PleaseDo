@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-final class NewItemVM: @ObservableObject {
+final class NewItemVM: ObservableObject {
     
     @Published var newItem = Item.empty()
     @Published var saveItemError = false
