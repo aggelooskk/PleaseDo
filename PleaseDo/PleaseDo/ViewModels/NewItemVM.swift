@@ -27,7 +27,7 @@ final class NewItemVM: ObservableObject {
     }
     
     func saveNewItem() {
-        Task {
+        Task { @MainActor in
             do {
                 try await  IM.shared.save(newItem)
                 DispatchQueue.main.async { [weak self] in

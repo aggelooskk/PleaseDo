@@ -15,7 +15,7 @@ final class ItemDetailsVM: ObservableObject {
     @Published var updateItemError = false
     
     func updateItem() {
-        Task {
+        Task { @MainActor in
             do {
                 try await  IM.shared.save(updatedItem)
                 DispatchQueue.main.async { [weak self] in
